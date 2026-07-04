@@ -18,10 +18,16 @@ How this repo's contents were chosen, for future reference when adding more.
 operations, no client data baked in) — portable, not included here since it's a separate
 install, not a skill file.
 
-**Genericized and included in `skills/`**: `code-review`, `fabric-notebook`, `email`. Note
+**Genericized and included in `skills/`**: `code-review`, `fabric-notebook`. Note
 `fabric-notebook` needed more than a naming pass — the original had real DEV/PRD workspace and
 dataset GUIDs plus a live Key Vault URL hardcoded in a reference table; those are placeholders
 here.
+
+**Genericized but deliberately NOT included here**: `email` — it's fully portable (no employer
+coupling once genericized, see the main portability list above), but this repo is scoped to
+Fabric/PBI agentic development specifically, and email drafting is off-topic for it. Belongs in
+a more general "my Claude Code setup" repo if one gets built later, not in a repo named
+`fabric-ai-toolkit`.
 
 **Deliberately excluded, employer-specific**: `daily-update`, `friday-update`, `weekly-update`,
 `new-report`, `sustana-doc`, `fabric-proposal`, `html-build`, `html-review` — built for one

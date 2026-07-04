@@ -9,17 +9,21 @@ generic and safe to run against any Fabric/Power BI project.
 
 ## What's in here
 
-- **`skills/`** — coding-agent skills, ready to drop into `~/.claude/skills/` (or the equivalent
-  directory for another agent CLI):
+- **`skills/`** — my own Fabric/PBI-specific coding-agent skills, ready to drop into
+  `~/.claude/skills/` (or the equivalent directory for another agent CLI):
   - `code-review/` — structured, severity-ranked review for PySpark, SQL, DAX, Power Query/M,
     and Fabric pipeline expressions.
   - `fabric-notebook/` — generates a well-structured Fabric PySpark notebook: standard 5-cell
     layout, logging, error handling, naming conventions baked in.
-  - `email/` — drafts a professional email as a one-click `.eml` file, humanized tone rules
-    applied automatically.
 - **`oss-harness/ARCHITECTURE.md`** — the general pattern behind agentic Fabric/PBI development:
-  the tool stack, the plan → author → validate → reload → screenshot-verify loop that catches
-  bugs a code-only review would miss, and an honest list of what it doesn't solve.
+  the plan → author → validate → reload → screenshot-verify loop that catches bugs a code-only
+  review would miss, and an honest list of what it doesn't solve.
+- **`STACK.md`** — the full toolchain this builds on, credited honestly: what's Microsoft-official
+  (skills-for-fabric, the Power BI Modeling MCP server, Tabular Editor), what's community-built
+  for this exact use case (pbi-cli), and what's actually mine.
+
+This repo is scoped to Fabric/Power BI agentic development specifically — general-purpose
+skills (writing, docs, etc.) live elsewhere, not here.
 
 ## Using a skill
 
