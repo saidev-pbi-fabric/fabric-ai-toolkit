@@ -4,6 +4,10 @@ Personal toolkit for AI-agent-driven development on Microsoft Fabric and Power B
 skills for a coding agent (Claude Code or equivalent) plus notes on the harness pattern that
 makes agentic BI development actually reliable, not just fast.
 
+**No coding background? Don't know GitHub? Start with [GETTING-STARTED.md](GETTING-STARTED.md)
+instead** — it explains all of this in plain language and gets you to a real first result
+before asking you to understand how anything works.
+
 No client or employer data, names, or configuration anywhere in this repo — everything here is
 generic and safe to run against any Fabric/Power BI project.
 
