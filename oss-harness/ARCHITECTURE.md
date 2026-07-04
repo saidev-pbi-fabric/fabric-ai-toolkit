@@ -14,17 +14,37 @@ window disconnected from the live model.
 
 ## The stack (generic components, all third-party/community tooling)
 
-- **A coding-agent CLI** — the driver. Anything that can run shell commands, read/write files,
-  and call MCP tools qualifies; the harness itself shouldn't assume one specific agent.
-- **An MCP server exposing Tabular Object Model operations** against a live semantic model —
-  tables, measures, relationships, DAX queries — so the agent can create/edit/validate model
-  objects directly instead of hand-writing TMDL blind.
-- **A report-authoring layer for PBIR** — pages, visuals, themes, filters as structured,
-  hand-editable JSON/text, so report layout is also "code" an agent can work on.
-- **A Power BI Desktop bridge** for live reload + screenshot verification — the mechanism that
-  turns "the agent wrote code" into "the agent confirmed it renders correctly."
-- **A library of reusable skills** (structured prompts + process, not just raw prompting) for
-  repeatable tasks: model documentation, DAX authoring, deployment/TMDL export, diagnostics.
+```mermaid
+flowchart TB
+    Agent["Coding-agent CLI<br/>(Claude Code / Copilot CLI / any equivalent)"]
+    Skills["Reusable skills<br/>(structured process, not raw prompting)"]
+    MCP["MCP server<br/>(Tabular Object Model operations)"]
+    PBIR["Report-authoring layer<br/>(PBIR: pages, visuals, themes, filters)"]
+    Bridge["Desktop bridge<br/>(live reload + screenshot)"]
+    Model[("Live semantic model")]
+    Report[("Report file")]
+
+    Agent --> Skills
+    Skills --> MCP
+    Skills --> PBIR
+    MCP --> Model
+    PBIR --> Report
+    Bridge --> Model
+    Bridge --> Report
+    Agent --> Bridge
+```
+
+- **Coding-agent CLI** — the driver. Anything that can run shell commands, read/write files, and
+  call MCP tools qualifies; the harness itself shouldn't assume one specific agent.
+- **MCP server** — exposes Tabular Object Model operations against a live semantic model
+  (tables, measures, relationships, DAX queries), so the agent edits/validates model objects
+  directly instead of hand-writing TMDL blind.
+- **Report-authoring layer** — PBIR (pages, visuals, themes, filters) as structured,
+  hand-editable text, so report layout is also "code" an agent can work on.
+- **Desktop bridge** — live reload + screenshot verification, the mechanism that turns "the
+  agent wrote code" into "the agent confirmed it renders correctly."
+- **Reusable skills** — structured process for repeatable tasks: model documentation, DAX
+  authoring, deployment/TMDL export, diagnostics.
 
 Open question for the actual build: does the public repo vendor/fork the MCP server and
 skill implementations, or does it document the pattern and point to the existing third-party
@@ -33,9 +53,14 @@ credit to the underlying tools) — revisit once repo scope is locked.
 
 ## The loop that makes it reliable, not just fast
 
-```
-Plan → Author (TMDL/PBIR via MCP + CLI) → Validate (query the LIVE model, not just read the code)
-  → Reload Desktop → Screenshot-verify → Iterate
+```mermaid
+flowchart LR
+    A[Plan] --> B["Author<br/>(TMDL/PBIR via MCP + CLI)"]
+    B --> C["Validate<br/>(query the LIVE model, not just the code)"]
+    C --> D[Reload Desktop]
+    D --> E[Screenshot-verify]
+    E -->|issue found| A
+    E -->|confirmed correct| F[Ship]
 ```
 
 The validate + screenshot-verify steps are the actual differentiator. A model or report edit
