@@ -1,12 +1,19 @@
 # fabric-ai-toolkit
 
-Personal toolkit for AI-agent-driven development on Microsoft Fabric and Power BI — reusable
-skills for a coding agent (Claude Code or equivalent) plus notes on the harness pattern that
-makes agentic BI development actually reliable, not just fast.
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![Microsoft Fabric](https://img.shields.io/badge/Microsoft-Fabric-0078D4)
+![Power BI](https://img.shields.io/badge/Power-BI-F2C811)
 
-**No coding background? Don't know GitHub? Start with [GETTING-STARTED.md](GETTING-STARTED.md)
-instead** — it explains all of this in plain language and gets you to a real first result
-before asking you to understand how anything works.
+**New here and not a coder? → [Start with GETTING-STARTED.md](GETTING-STARTED.md)** — plain
+language, no jargon, a real first result before you need to understand anything else on this
+page.
+
+> An AI assistant with real, hands-on access to Power BI and Microsoft Fabric — one that checks
+> its own work against the live data before calling anything done.
+
+Personal toolkit for AI-agent-driven development on Microsoft Fabric and Power BI: reusable
+skills for a coding agent (Claude Code or equivalent), plus the harness pattern that makes it
+reliable, not just fast.
 
 No client or employer data, names, or configuration anywhere in this repo — everything here is
 generic and safe to run against any Fabric/Power BI project.
